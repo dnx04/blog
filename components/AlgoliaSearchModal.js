@@ -17,15 +17,15 @@ import { useHotkeys } from 'react-hotkeys-hook'
 const ShortCutActions = [
   {
     key: '↑ ↓',
-    action: '选择'
+    action: 'Select'
   },
   {
     key: 'Enter',
-    action: '跳转'
+    action: 'Redirect'
   },
   {
     key: 'Esc',
-    action: '关闭'
+    action: 'Close'
   }
 ]
 
@@ -248,7 +248,7 @@ export default function AlgoliaSearchModal({ cRef }) {
         } flex flex-col justify-between w-full min-h-[10rem] h-full md:h-fit max-w-xl dark:bg-hexo-black-gray dark:border-gray-800 bg-white dark:bg- p-5 rounded-lg z-50 shadow border hover:border-blue-600 duration-300 transition-all `}>
         <div className='flex justify-between items-center'>
           <div className='text-2xl text-blue-600 dark:text-yellow-600 font-bold'>
-            搜索
+            Search
           </div>
           <div>
             <i
@@ -259,7 +259,7 @@ export default function AlgoliaSearchModal({ cRef }) {
 
         <input
           type='text'
-          placeholder='在这里输入搜索关键词...'
+          placeholder='Enter search keyword here...'
           onChange={e => handleInputChange(e)}
           className='text-black dark:text-gray-200 bg-gray-50 dark:bg-gray-600 outline-blue-500 w-full px-4 my-2 py-1 mb-4 border rounded-md'
           ref={inputRef}
@@ -273,7 +273,7 @@ export default function AlgoliaSearchModal({ cRef }) {
           <div>
             <p className=' text-slate-600 text-center my-4 text-base'>
               {' '}
-              无法找到相关结果
+              Unable to find relevant results
               <span className='font-semibold'>&quot;{keyword}&quot;</span>
             </p>
           </div>
@@ -315,13 +315,13 @@ export default function AlgoliaSearchModal({ cRef }) {
           <div>
             {totalHit > 0 && (
               <p>
-                共搜索到 {totalHit} 条结果，用时 {useTime} 毫秒
+                Found {totalHit} results, {useTime}ms elapsed
               </p>
             )}
           </div>
           <div className='text-gray-600 dark:text-gray-300  text-right'>
             <span>
-              <i className='fa-brands fa-algolia'></i> Algolia 提供搜索服务
+              <i className='fa-brands fa-algolia'></i> Powered by Algolia
             </span>
           </div>
         </div>
