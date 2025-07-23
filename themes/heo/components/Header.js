@@ -3,6 +3,7 @@ import { isBrowser } from '@/lib/utils'
 import throttle from 'lodash.throttle'
 import { useRouter } from 'next/router'
 import { useCallback, useEffect, useRef, useState } from 'react'
+import CONFIG from '../config'
 import DarkModeButton from './DarkModeButton'
 import Logo from './Logo'
 import { MenuListTop } from './MenuListTop'
@@ -169,7 +170,7 @@ const Header = props => {
           <div className='flex flex-shrink-0 justify-end items-center w-48'>
             <RandomPostButton {...props} />
             <SearchButton {...props} />
-            {!JSON.parse(siteConfig('THEME_SWITCH')) && (
+            {!JSON.parse(siteConfig('THEME_SWITCH')) && siteConfig('HEO_WIDGET_DARK_MODE', null, CONFIG) && (
               <div className='hidden md:block'>
                 <DarkModeButton {...props} />
               </div>

@@ -18,15 +18,15 @@ export const MenuItemDrop = ({ link }) => {
         <Link
           target={link?.target}
           href={link?.href}
-          className=' hover:bg-black hover:bg-opacity-10 rounded-2xl flex justify-center items-center px-3 py-1 no-underline tracking-widest'>
-          {link?.icon && <i className={link?.icon} />} {link?.name}
+          className='hover:bg-black hover:bg-opacity-10 dark:hover:bg-white dark:hover:bg-opacity-10 rounded-2xl flex justify-center items-center px-4 py-2 no-underline tracking-wide transition-all duration-200 mx-1'>
+          {link?.icon && <i className={`${link?.icon} mr-2`} />} {link?.name}
         </Link>
       )}
       {/* 含子菜单的按钮 */}
       {hasSubMenu && (
         <>
-          <div className='cursor-pointer hover:bg-black hover:bg-opacity-10 rounded-2xl flex justify-center items-center px-3 py-1 no-underline tracking-widest relative'>
-            {link?.icon && <i className={link?.icon} />} {link?.name}
+          <div className='cursor-pointer hover:bg-black hover:bg-opacity-10 dark:hover:bg-white dark:hover:bg-opacity-10 rounded-2xl flex justify-center items-center px-4 py-2 no-underline tracking-wide transition-all duration-200 mx-1 relative'>
+            {link?.icon && <i className={`${link?.icon} mr-2`} />} {link?.name}
             {/* 主菜单下方的安全区域 */}
             {show && (
               <div className='absolute w-full h-4 -bottom-4 left-0 bg-transparent z-30'></div>

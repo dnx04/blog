@@ -30,31 +30,37 @@ export const PostLock = props => {
   return (
     <div
       id='container'
-      className='w-full flex justify-center items-center h-96 '>
-      <div className='text-center space-y-3'>
-        <div className='font-bold dark:text-gray-300 text-black'>
-          {locale.COMMON.ARTICLE_LOCK_TIPS}
+      className='w-full flex justify-center items-center min-h-96 py-12 px-4'>
+      <div className='text-center space-y-6 max-w-md w-full'>
+        <div className='space-y-2'>
+          <div className='text-6xl mb-4'>🔒</div>
+          <h2 className='text-2xl font-bold dark:text-gray-200 text-gray-800'>
+            Protected Content
+          </h2>
+          <p className='text-gray-600 dark:text-gray-400'>
+            {locale.COMMON.ARTICLE_LOCK_TIPS}
+          </p>
         </div>
-        <div className='flex mx-4'>
+        <div className='flex mx-4 max-w-md'>
           <input
             id='password'
             type='password'
+            placeholder='Enter password...'
             onKeyDown={e => {
               if (e.key === 'Enter') {
                 submitPassword()
               }
             }}
             ref={passwordInputRef} // 绑定ref到passwordInputRef变量
-            className='outline-none w-full text-sm pl-5 rounded-l transition focus:shadow-lg  font-light leading-10 bg-gray-100 dark:bg-gray-500'></input>
-          <div
+            className='outline-none w-full text-sm px-4 py-3 rounded-l-lg transition focus:shadow-lg focus:ring-2 focus:ring-indigo-500 font-light bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-black dark:text-white'></input>
+          <button
             onClick={submitPassword}
-            className='px-3 whitespace-nowrap cursor-pointer items-center justify-center py-2 bg-indigo-500 hover:bg-indigo-400 text-white rounded-r duration-300'>
-            <i className={'duration-200 cursor-pointer fas fa-key'}>
-              &nbsp;{locale.COMMON.SUBMIT}
-            </i>
-          </div>
+            className='px-6 py-3 whitespace-nowrap cursor-pointer flex items-center justify-center bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white rounded-r-lg duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl transition-all'>
+            <i className='fas fa-key mr-2'></i>
+            <span className='font-medium'>{locale.COMMON.SUBMIT}</span>
+          </button>
         </div>
-        <div id='tips'></div>
+        <div id='tips' className='text-sm'></div>
       </div>
     </div>
   )
