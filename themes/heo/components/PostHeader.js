@@ -4,7 +4,7 @@ import NotionIcon from '@/components/NotionIcon'
 import WordCount from '@/components/WordCount'
 import { siteConfig } from '@/lib/config'
 import { formatDateFmt } from '@/lib/utils/formatDate'
-import Link from 'next/link'
+import SmartLink from '@/components/SmartLink'
 import WavesArea from './WavesArea'
 
 /**
@@ -44,7 +44,7 @@ export default function PostHeader({ post, siteInfo, isDarkMode }) {
           <div className='flex justify-center md:justify-start items-center gap-4'>
             {post.category && (
               <>
-                <Link
+                <SmartLink
                   href={`/category/${post.category}`}
                   className='mr-4'
                   passHref
@@ -52,14 +52,14 @@ export default function PostHeader({ post, siteInfo, isDarkMode }) {
                   <div className='cursor-pointer font-sm font-bold px-3 py-1 rounded-lg hover:bg-white text-white bg-blue-500 dark:bg-yellow-500 hover:text-blue-500 dark:hover:text-yellow-500 duration-200 '>
                     {post.category}
                   </div>
-                </Link>
+                </SmartLink>
               </>
             )}
 
             {post.tagItems && (
               <div className='hidden md:flex justify-center flex-nowrap overflow-x-auto'>
                 {post.tagItems.map((tag, index) => (
-                  <Link
+                  <SmartLink
                     key={index}
                     href={`/tag/${encodeURIComponent(tag.name)}`}
                     passHref
@@ -70,7 +70,7 @@ export default function PostHeader({ post, siteInfo, isDarkMode }) {
                       <HashTag className='text-gray-700 dark:text-gray-200 stroke-2 mr-0.5 w-3 h-3' />{' '}
                       {tag.name + (tag.count ? `(${tag.count})` : '')}{' '}
                     </div>
-                  </Link>
+                  </SmartLink>
                 ))}
               </div>
             )}
@@ -95,13 +95,15 @@ export default function PostHeader({ post, siteInfo, isDarkMode }) {
               </div>
               
               {post?.type !== 'Page' && (
-                <Link
-                  href={`/archive#${formatDateFmt(post?.publishDate, 'yyyy-MM')}`}
-                  passHref
-                  className={`flex items-center bg-black bg-opacity-20 px-3 py-1 rounded-full backdrop-blur-sm cursor-pointer hover:bg-opacity-30 transition-all duration-200 ${isDarkMode ? 'text-gray-200 hover:text-white' : 'text-gray-600 hover:text-gray-800'}`}>
-                  <i className='fa-regular fa-calendar mr-2'></i>
-                  <span>Created {post?.publishDay}</span>
-                </Link>
+                <>
+                  <SmartLink
+                    href={`/archive#${formatDateFmt(post?.publishDate, 'yyyy-MM')}`}
+                    passHref
+                    className='pl-1 mr-2 cursor-pointer hover:underline'>
+                    <i className='fa-regular fa-calendar'></i>{' '}
+                    {post?.publishDay}
+                  </SmartLink>
+                </>
               )}
 
               <div className={`flex items-center bg-black bg-opacity-20 px-3 py-1 rounded-full backdrop-blur-sm ${isDarkMode ? 'text-gray-200' : 'text-gray-600'}`}>
